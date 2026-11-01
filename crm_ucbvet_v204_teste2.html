@@ -8801,43 +8801,62 @@ ${(() => {
     padding: 8px !important;
     z-index: 2000 !important;
   }
+  /* Largura total garantida nos dois modais principais, apontando pelos IDs */
+  #producerModal .modal-content,
+  #detailModal .modal-content,
   .modal-overlay .modal-content {
     position: relative !important;
     transform: none !important;
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
     max-height: 94vh !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     border-radius: 10px !important;
   }
-  /* Reduzir padding do formulário */
-  .modal-body {
-    padding: 0.9rem !important;
-    gap: 0.9rem !important;
-  }
-  .modal-header {
-    padding: 0.8rem 0.9rem !important;
-  }
-  .modal-footer {
-    padding: 0.7rem 0.9rem !important;
-  }
-  /* FORÇAR UMA COLUNA: todas as grades internas do formulário viram lista única */
+  /* Campos em coluna única, largura total */
+  #producerModal .shell-grid,
+  #producerModal .filter-grid,
+  #producerModal .map-coord-wrapper,
   .modal-content .shell-grid,
   .modal-content .filter-grid,
   .modal-content .map-coord-wrapper {
     grid-template-columns: 1fr !important;
   }
-  /* O mapa de localização ganha altura confortável em coluna única */
+  /* Todos os campos ocupam a largura inteira da caixa */
+  #producerModal .form-group,
+  .modal-content .form-group {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #producerModal input,
+  #producerModal select,
+  #producerModal textarea,
+  .modal-content input,
+  .modal-content select,
+  .modal-content textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Mapa de localização com altura confortável */
+  #producerModal #mapPicker,
   .modal-content #mapPicker {
     min-height: 220px !important;
   }
-  /* Botões do rodapé empilhados e largos, fáceis de tocar */
+  /* Rodapé: botões empilhados, largos e DENTRO da caixa */
+  #producerModal .modal-footer,
   .modal-footer {
+    width: 100% !important;
+    box-sizing: border-box !important;
     flex-direction: column !important;
+    align-items: stretch !important;
     gap: 0.5rem !important;
   }
+  #producerModal .modal-footer .btn-sm,
   .modal-footer .btn-sm {
     width: 100% !important;
     text-align: center !important;
