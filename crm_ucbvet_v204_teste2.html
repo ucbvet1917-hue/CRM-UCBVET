@@ -8792,7 +8792,6 @@ ${(() => {
     padding: 6px 10px !important;
   }
 }
-
 /* 2) Modal e formulário de cadastro otimizados para o celular */
 @media (max-width: 768px) {
   .modal-overlay {
@@ -8801,7 +8800,7 @@ ${(() => {
     padding: 8px !important;
     z-index: 2000 !important;
   }
-  /* Largura total garantida nos dois modais principais, apontando pelos IDs */
+  /* CAIXA DO MODAL: largura total garantida */
   #producerModal .modal-content,
   #detailModal .modal-content,
   .modal-overlay .modal-content {
@@ -8814,43 +8813,54 @@ ${(() => {
     box-sizing: border-box !important;
     max-height: 94vh !important;
     overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
     border-radius: 10px !important;
   }
-  /* Campos em coluna única, largura total */
+  /* O FORMULÁRIO interno também precisa ocupar a caixa inteira */
+  #producerModal form,
+  #producerModal .modal-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 0.9rem !important;
+  }
+  /* Seções e grades: coluna única */
+  #producerModal .form-section,
   #producerModal .shell-grid,
   #producerModal .filter-grid,
   #producerModal .map-coord-wrapper,
   .modal-content .shell-grid,
-  .modal-content .filter-grid,
   .modal-content .map-coord-wrapper {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #producerModal .shell-grid,
+  #producerModal .filter-grid,
+  #producerModal .map-coord-wrapper {
     grid-template-columns: 1fr !important;
   }
-  /* Todos os campos ocupam a largura inteira da caixa */
-  #producerModal .form-group,
-  .modal-content .form-group {
+  /* Campos e labels: largura total */
+  #producerModal .form-group {
     width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
   }
   #producerModal input,
   #producerModal select,
-  #producerModal textarea,
-  .modal-content input,
-  .modal-content select,
-  .modal-content textarea {
+  #producerModal textarea {
     width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
   }
-  /* Mapa de localização com altura confortável */
-  #producerModal #mapPicker,
-  .modal-content #mapPicker {
+  #producerModal #mapPicker {
     min-height: 220px !important;
   }
-  /* Rodapé: botões empilhados, largos e DENTRO da caixa */
+  /* RODAPÉ: os botões ficam DENTRO da caixa, empilhados */
   #producerModal .modal-footer,
   .modal-footer {
     width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
     flex-direction: column !important;
     align-items: stretch !important;
