@@ -8792,55 +8792,71 @@ ${(() => {
     padding: 6px 10px !important;
   }
 }
-/* 2) Modal e formulário de cadastro otimizados para o celular */
-@media (max-width: 768px) {
+/* 2) Formulário de cadastro em TELA CHEIA no celular (painel tipo app) */
+@media (max-width: 768px), (max-device-width: 1024px) {
+  /* Overlay: ocupa a tela toda */
   .modal-overlay {
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 8px !important;
+    position: fixed !important;
+    inset: 0 !important;
+    padding: 0 !important;
     z-index: 2000 !important;
   }
-  /* CAIXA DO MODAL: largura total garantida */
+  /* CAIXA: tela inteira, sem cantos, coluna única (cabeçalho / corpo / rodapé) */
   #producerModal .modal-content,
-  #detailModal .modal-content,
-  .modal-overlay .modal-content {
-    position: relative !important;
-    transform: none !important;
-    margin: 0 !important;
+  #detailModal .modal-content {
+    position: fixed !important;
+    inset: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
     box-sizing: border-box !important;
-    max-height: 94vh !important;
+  }
+  /* Cabeçalho do modal fixo no topo */
+  #producerModal .modal-header,
+  #detailModal .modal-header {
+    flex: 0 0 auto !important;
+    position: static !important;
+  }
+  /* Corpo do formulário: ocupa o meio e rola por dentro */
+  #producerModal .modal-body,
+  #detailModal .modal-body {
+    flex: 1 1 auto !important;
     overflow-y: auto !important;
-    border-radius: 10px !important;
-  }
-  /* O FORMULÁRIO interno também precisa ocupar a caixa inteira */
-  #producerModal form,
-  #producerModal .modal-body {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
+    -webkit-overflow-scrolling: touch;
     padding: 0.9rem !important;
-  }
-  /* Seções e grades: coluna única */
-  #producerModal .form-section,
-  #producerModal .shell-grid,
-  #producerModal .filter-grid,
-  #producerModal .map-coord-wrapper,
-  .modal-content .shell-grid,
-  .modal-content .map-coord-wrapper {
     width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
   }
+  /* RODAPÉ: fixo na base da tela, botões empilhados e largos */
+  #producerModal .modal-footer,
+  #detailModal .modal-footer {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+    padding: 0.7rem 0.9rem !important;
+  }
+  #producerModal .modal-footer .btn-sm,
+  #detailModal .modal-footer .btn-sm {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+  /* Campos em coluna única, largura total */
   #producerModal .shell-grid,
   #producerModal .filter-grid,
   #producerModal .map-coord-wrapper {
     grid-template-columns: 1fr !important;
   }
-  /* Campos e labels: largura total */
   #producerModal .form-group {
     width: 100% !important;
     min-width: 0 !important;
@@ -8855,21 +8871,6 @@ ${(() => {
   }
   #producerModal #mapPicker {
     min-height: 220px !important;
-  }
-  /* RODAPÉ: os botões ficam DENTRO da caixa, empilhados */
-  #producerModal .modal-footer,
-  .modal-footer {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0.5rem !important;
-  }
-  #producerModal .modal-footer .btn-sm,
-  .modal-footer .btn-sm {
-    width: 100% !important;
-    text-align: center !important;
   }
 }
 </style>
