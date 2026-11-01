@@ -8793,12 +8793,12 @@ ${(() => {
   }
 }
 
-/* 2) Modal em tela cheia e centrado no celular (sem interferir na exibição/ocultação) */
+/* 2) Modal e formulário de cadastro otimizados para o celular */
 @media (max-width: 768px) {
   .modal-overlay {
     align-items: center !important;
     justify-content: center !important;
-    padding: 10px !important;
+    padding: 8px !important;
     z-index: 2000 !important;
   }
   .modal-overlay .modal-content {
@@ -8807,10 +8807,40 @@ ${(() => {
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    max-height: 92vh !important;
+    max-height: 94vh !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     border-radius: 10px !important;
+  }
+  /* Reduzir padding do formulário */
+  .modal-body {
+    padding: 0.9rem !important;
+    gap: 0.9rem !important;
+  }
+  .modal-header {
+    padding: 0.8rem 0.9rem !important;
+  }
+  .modal-footer {
+    padding: 0.7rem 0.9rem !important;
+  }
+  /* FORÇAR UMA COLUNA: todas as grades internas do formulário viram lista única */
+  .modal-content .shell-grid,
+  .modal-content .filter-grid,
+  .modal-content .map-coord-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  /* O mapa de localização ganha altura confortável em coluna única */
+  .modal-content #mapPicker {
+    min-height: 220px !important;
+  }
+  /* Botões do rodapé empilhados e largos, fáceis de tocar */
+  .modal-footer {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .modal-footer .btn-sm {
+    width: 100% !important;
+    text-align: center !important;
   }
 }
 </style>
