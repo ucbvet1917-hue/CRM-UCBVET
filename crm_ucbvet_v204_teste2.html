@@ -8792,7 +8792,7 @@ ${(() => {
     padding: 6px 10px !important;
   }
 }
-/* 2) Formulário de cadastro em TELA CHEIA no celular (painel tipo app) */
+/* 2) Formulário de cadastro em tela cheia no celular, COM ROLAGEM LIVRE */
 @media (max-width: 768px), (max-device-width: 1024px) {
   /* Overlay: ocupa a tela toda */
   .modal-overlay {
@@ -8801,7 +8801,7 @@ ${(() => {
     padding: 0 !important;
     z-index: 2000 !important;
   }
-  /* CAIXA: tela inteira, sem cantos, coluna única (cabeçalho / corpo / rodapé) */
+  /* CAIXA: tela inteira, coluna única, COM rolagem interna (sem overflow: hidden) */
   #producerModal .modal-content,
   #detailModal .modal-content {
     position: fixed !important;
@@ -8814,30 +8814,27 @@ ${(() => {
     border-radius: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    overflow: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box !important;
   }
-  /* Cabeçalho do modal fixo no topo */
+  /* Cabeçalho do modal no topo */
   #producerModal .modal-header,
   #detailModal .modal-header {
     flex: 0 0 auto !important;
     position: static !important;
   }
-  /* Corpo do formulário: ocupa o meio e rola por dentro */
+  /* Corpo do formulário: largura total, SEM flex-travado (a rolagem fica na caixa) */
   #producerModal .modal-body,
   #detailModal .modal-body {
-    flex: 1 1 auto !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
     padding: 0.9rem !important;
     width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
   }
-  /* RODAPÉ: fixo na base da tela, botões empilhados e largos */
+  /* RODAPÉ: botões empilhados e largos */
   #producerModal .modal-footer,
   #detailModal .modal-footer {
-    flex: 0 0 auto !important;
     width: 100% !important;
     box-sizing: border-box !important;
     flex-direction: column !important;
