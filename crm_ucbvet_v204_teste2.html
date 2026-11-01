@@ -8753,12 +8753,18 @@ ${(() => {
     </div>
   </div>
 	<style>
-/* Compactar cabeçalho em telas pequenas (classes reais) */
+		/* ===== CÓDIGO COMPLETO: CABEÇALHO COMPACTO + ROLÁVEL E MODAL EM TELA CHEIA (CELULAR) ===== */
+
+/* 1) Cabeçalho compacto e que rola junto com a página (sai da tela ao descer) */
 @media (max-width: 768px) {
+  .app-header {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+  }
   .header-inner {
     padding: 0.4rem 0.6rem !important;
     gap: 0.5rem !important;
-    flex-wrap: nowrap !important;
   }
   .brand-icon {
     font-size: 0.75rem !important;
@@ -8773,12 +8779,12 @@ ${(() => {
   .app-header small {
     display: none !important;
   }
-  .header-actions {
-    gap: 0.35rem !important;
-  }
   .net-status {
     font-size: 0.68rem !important;
     padding: 3px 8px !important;
+  }
+  .header-actions {
+    gap: 0.35rem !important;
   }
   .header-actions .btn-sm,
   .header-actions button {
@@ -8786,42 +8792,28 @@ ${(() => {
     padding: 6px 10px !important;
   }
 }
-  /* Esconde elementos secundários: subtítulo, selo e textos de apoio */
-  .app-header p,
-  .app-header .subtitle,
-  .app-header .badge,
-  .app-header small {
-    display: none !important;
-  }
-  /* Linha de status/IBGE mais compacta */
-  .app-header .status-row,
-  .app-header .header-info,
-  .app-header span {
-    font-size: 0.72rem !important;
-  }
-  /* Botões do cabeçalho menores */
-  .app-header button,
-  .header-actions button {
-    font-size: 0.8rem !important;
-    padding: 6px 10px !important;
-  }
-}
-/* Cabeçalho rola junto com a página (remove o fixo) */
+
+/* 2) Modal de cadastro em tela cheia, centrado e com rolagem (Novo Produtor / Detalhes) */
 @media (max-width: 768px) {
-  .app-header {
-    position: static !important;
-    top: auto !important;
-    z-index: auto !important;
+  .modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px !important;
+    z-index: 2000 !important;
   }
-  .header-inner {
-    padding: 0.4rem 0.6rem !important;
-    gap: 0.5rem !important;
-  }
-  .brand-tag {
-    display: none !important;
-  }
-  .app-header small {
-    display: none !important;
+  .modal-overlay .modal-content {
+    position: relative !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px !important;
   }
 }
 </style>
