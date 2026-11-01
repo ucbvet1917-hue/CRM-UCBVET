@@ -8806,19 +8806,22 @@ ${(() => {
     padding: 6px 10px !important;
   }
 }
+/* Cabeçalho rola junto com a página (remove o fixo) */
 @media (max-width: 768px) {
-  .modal, .modal-overlay, .modal-content, .modal-dialog, .form-modal {
-    position: fixed !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    transform: none !important;
-    border-radius: 0 !important;
-    overflow-y: auto !important;
+  .app-header {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+  }
+  .header-inner {
+    padding: 0.4rem 0.6rem !important;
+    gap: 0.5rem !important;
+  }
+  .brand-tag {
+    display: none !important;
+  }
+  .app-header small {
+    display: none !important;
   }
 }
 </style>
