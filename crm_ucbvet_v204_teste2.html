@@ -8753,6 +8753,35 @@ ${(() => {
     </div>
   </div>
 	<style>
+		/* Compactar cabeçalho em telas pequenas */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 8px 12px !important;
+  }
+  .app-header h1 {
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+  }
+  /* Esconde elementos secundários: subtítulo, selo e textos de apoio */
+  .app-header p,
+  .app-header .subtitle,
+  .app-header .badge,
+  .app-header small {
+    display: none !important;
+  }
+  /* Linha de status/IBGE mais compacta */
+  .app-header .status-row,
+  .app-header .header-info,
+  .app-header span {
+    font-size: 0.72rem !important;
+  }
+  /* Botões do cabeçalho menores */
+  .app-header button,
+  .header-actions button {
+    font-size: 0.8rem !important;
+    padding: 6px 10px !important;
+  }
+}
 @media (max-width: 768px) {
   .modal, .modal-overlay, .modal-content, .modal-dialog, .form-modal {
     position: fixed !important;
