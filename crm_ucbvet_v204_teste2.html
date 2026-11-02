@@ -3549,7 +3549,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <button type="submit" class="btn-sm btn-brand">Salvar Produtor (Offline/Online)</button>
         </div>
       
-    </div></form>
+    </form></div>
   </div>
 
 
@@ -8792,61 +8792,30 @@ ${(() => {
     padding: 6px 10px !important;
   }
 }
-/* 2) Cadastro em tela cheia no celular — o FORMULÁRIO é o painel (estrutura especial do HTML) */
+/* 2) Modal de cadastro em tela cheia no celular (estrutura HTML corrigida) */
 @media (max-width: 768px), (max-device-width: 1024px) {
-  /* Ficha "Detalhes do Produtor" (estrutura normal) */
+  #producerModal .modal-content,
   #detailModal .modal-content {
     position: fixed !important;
     inset: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     height: 100% !important;
+    max-height: 100% !important;
     border-radius: 0 !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box !important;
   }
-  /* CADASTRO: a caixa original fica em modo normal (só segura o cabeçalho) */
-  #producerModal .modal-content {
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    background: #0a2432 !important;
-  }
-  /* Cabeçalho "Cadastrar Produtor" + X: fixo no topo, sempre visível */
-  #producerModal .modal-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 2300 !important;
-    background: #0a2432 !important;
-    border-bottom: 1px solid var(--teal-border) !important;
-  }
-  /* O FORMULÁRIO é o painel de tela cheia (ele contém campos E botões) */
-  #producerModal form#producerForm {
-    position: fixed !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: #0a2432 !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-    z-index: 2100 !important;
-    box-sizing: border-box !important;
-    padding-top: 52px !important;
-  }
-  /* Corpo do formulário */
-  #producerModal .modal-body {
+  #producerModal .modal-body,
+  #detailModal .modal-body {
     padding: 0.9rem !important;
     width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
   }
-  /* RODAPÉ COM OS BOTÕES: no fim do formulário, largos */
+  /* Rodapé: no final do formulário, botões largos, um por linha */
   #producerModal .modal-footer {
     display: block !important;
     width: 100% !important;
@@ -8858,7 +8827,6 @@ ${(() => {
     margin: 0 0 0.5rem 0 !important;
     text-align: center !important;
   }
-  /* Campos em coluna única, largura total */
   #producerModal .shell-grid,
   #producerModal .filter-grid,
   #producerModal .map-coord-wrapper {
