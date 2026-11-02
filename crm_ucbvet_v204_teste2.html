@@ -6775,7 +6775,7 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         setTimeout(() => this.initPickerMap(producer), 200);
       },
 
-closeProducerModal() {
+      closeProducerModal() {
         document.getElementById("producerModal").classList.remove("active");
       },
 
@@ -6788,6 +6788,7 @@ closeProducerModal() {
           : "https://waze.com/ul?ll=" + lat + "," + lng + "&navigate=yes";
         window.open(url, "_blank");
       },
+
       initPickerMap(producer) {
         if (!window.L) return;
         const container = document.getElementById("mapPicker");
