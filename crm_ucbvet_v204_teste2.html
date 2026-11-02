@@ -5152,11 +5152,9 @@ this.distanceOrigin = localStorage.getItem(this.distanceOriginKey) || "gps";
             if (savedO && savedO.lat != null) routeOrigin = `${savedO.lat},${savedO.lng}`;
           } catch (e) {}
 const distBadgeHtml = distInfo.hasCoords
-        ? `<a class="distance-badge" style="text-decoration:none; cursor:pointer;"
-              title="Abrir trajeto da minha localização até a propriedade"
-              href="https://www.google.com/maps/dir/?api=1&origin=${routeOrigin}&destination=${p.lat},${p.lng}&travelmode=driving"
-              target="_blank" rel="noopener"
-              onclick="event.stopPropagation();">
+<a class="distance-badge" style="text-decoration:none; cursor:pointer;"
+    title="Abrir trajeto da minha localização até a propriedade"
+    onclick="event.stopPropagation(); event.preventDefault(); app.askMapChoice(${p.lat}, ${p.lng}, '${routeOrigin}');">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 8 12 6 9 8 12 2"/><circle cx="12" cy="12" r="3"/></svg>
             ${distInfo.distStr}
           </a>`
@@ -6777,10 +6775,19 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         setTimeout(() => this.initPickerMap(producer), 200);
       }
 
-      closeProducerModal() {
+closeProducerModal() {
         document.getElementById("producerModal").classList.remove("active");
-      }
+      },
 
+      askMapChoice(lat, lng, origin) {
+        if (!lat || !lng) { alert("Produtor sem coordenadas."); return; }
+        const useGoogle = confirm("Abrir trajeto em qual app?\n\nOK = Google Maps\nCancelar = Waze");
+        const dest = encodeURIComponent(lat + "," + lng);
+        const url = useGoogle
+          ? "https://www.google.com/maps/dir/?api=1&origin=" + (origin || "") + "&destination=" + dest + "&travelmode=driving"
+          : "https://waze.com/ul?ll=" + lat + "," + lng + "&navigate=yes";
+        window.open(url, "_blank");
+      },
       initPickerMap(producer) {
         if (!window.L) return;
         const container = document.getElementById("mapPicker");
