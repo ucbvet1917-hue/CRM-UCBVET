@@ -8849,5 +8849,16 @@ ${(() => {
   }
 }
 </style>
+<script>
+/* Correção automática da estrutura do modal de cadastro */
+document.addEventListener("DOMContentLoaded", function () {
+  var content = document.querySelector("#producerModal .modal-content");
+  var form = document.getElementById("producerForm");
+  var footer = document.querySelector("#producerModal .modal-footer");
+  if (!content || !form || !footer) return;
+  if (form.parentElement !== content) content.appendChild(form);
+  if (footer.parentElement !== form) form.appendChild(footer);
+});
+</script>
 </body>
 </html>
