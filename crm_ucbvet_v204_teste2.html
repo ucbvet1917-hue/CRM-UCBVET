@@ -6666,6 +6666,7 @@ saveReprodLeiteDetails() {
     btn.textContent = name + (active ? " ✓" : "");
   }
       openProducerModal(producer = null) {
+        this._editingProducer = producer || null;  
         if (!producer) {
           this._editingProducer = null;
           this._reprodCorteTemp = null;
