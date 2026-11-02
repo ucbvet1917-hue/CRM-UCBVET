@@ -5151,14 +5151,14 @@ this.distanceOrigin = localStorage.getItem(this.distanceOriginKey) || "gps";
             const savedO = JSON.parse(localStorage.getItem("crmUserLoc"));
             if (savedO && savedO.lat != null) routeOrigin = `${savedO.lat},${savedO.lng}`;
           } catch (e) {}
-const distBadgeHtml = distInfo.hasCoords
-<a class="distance-badge" style="text-decoration:none; cursor:pointer;"
-    title="Abrir trajeto da minha localização até a propriedade"
-    onclick="event.stopPropagation(); event.preventDefault(); app.askMapChoice(${p.lat}, ${p.lng}, '${routeOrigin}');">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 8 12 6 9 8 12 2"/><circle cx="12" cy="12" r="3"/></svg>
-            ${distInfo.distStr}
-          </a>`
-: `<button type="button" class="distance-badge no-coords" onclick="app.quickLocateProducer('${p.id}')" title="Clique para registrar localização">
+        const distBadgeHtml = distInfo.hasCoords
+        ? `<a class="distance-badge" style="text-decoration:none; cursor:pointer;"
+              title="Abrir trajeto da minha localização até a propriedade"
+              onclick="event.stopPropagation(); event.preventDefault(); app.askMapChoice(${p.lat}, ${p.lng}, '${routeOrigin}');">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 8 12 6 9 8 12 2"/><circle cx="12" cy="12" r="3"/></svg>
+              ${distInfo.distStr}
+            </a>`
+        : `<button type="button" class="distance-badge no-coords" onclick="app.quickLocateProducer('${p.id}')" title="Clique para registrar localização">
                  ⚠️ sem coordenadas
                </button>`;
 
