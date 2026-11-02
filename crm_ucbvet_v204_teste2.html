@@ -6749,7 +6749,20 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
           document.getElementById("fieldLat").value = "-24.045000";
           document.getElementById("fieldLng").value = "-52.378000";
           document.getElementById("fieldState").value = "";
-          this.updateCityComboboxState("modal");
+          // Preenche com o GPS atual do aparelho (Campo Mourão fica como reserva)
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (pos) => {
+                const latEl = document.getElementById("fieldLat");
+                const lngEl = document.getElementById("fieldLng");
+                latEl.value = pos.coords.latitude.toFixed(6);
+                lngEl.value = pos.coords.longitude.toFixed(6);
+                if (this.initPickerMap) setTimeout(() => this.initPickerMap(null), 150);
+              },
+              () => { /* GPS negado/indisponível: mantém Campo Mourão */ },
+              { enableHighAccuracy: true, timeout: 8000 }
+            );
+          }          this.updateCityComboboxState("modal");
           this.setComboboxValue("modal", "", "");
         }
 
