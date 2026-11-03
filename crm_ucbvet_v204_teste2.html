@@ -6796,6 +6796,7 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         if (!this.pickerMap) {
           this.pickerMap = L.map("mapPicker", { zoomControl: true }).setView([initialLat, initialLng], hasCoords ? 12 : 9);
 		  setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 300);
+		 setTimeout(() => { if (this.pickerMap) { this.pickerMap.invalidateSize(); } }, 800);
           this.setupResilientTileLayer(this.pickerMap, container.parentElement, true);
           if (!hasCoords && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
