@@ -6775,7 +6775,7 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         modal.classList.add("active");
 
         // Init picker map
-        setTimeout(() => this.initPickerMap(producer), 200);
+        setTimeout(() => this.initPickerMap(producer), 600);
 	    setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 500);
       }
 
@@ -6797,6 +6797,7 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
           this.pickerMap = L.map("mapPicker", { zoomControl: true }).setView([initialLat, initialLng], hasCoords ? 12 : 9);
 		  setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 300);
 		 setTimeout(() => { if (this.pickerMap) { this.pickerMap.invalidateSize(); } }, 800);
+		 setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 1500);
           this.setupResilientTileLayer(this.pickerMap, container.parentElement, true);
           if (!hasCoords && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
