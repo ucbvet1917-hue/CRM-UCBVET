@@ -6776,6 +6776,7 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
 
         // Init picker map
         setTimeout(() => this.initPickerMap(producer), 200);
+	    setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 500);
       }
 
       closeProducerModal() {
