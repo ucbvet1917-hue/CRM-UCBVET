@@ -6781,8 +6781,8 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
 
       closeProducerModal() {
         document.getElementById("producerModal").classList.remove("active");
+        if (this.pickerMap) { this.pickerMap.remove(); this.pickerMap = null; }
       }
-
       initPickerMap(producer) {
         if (!window.L) return;
         const container = document.getElementById("mapPicker");
@@ -6795,6 +6795,7 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
 
         if (!this.pickerMap) {
           this.pickerMap = L.map("mapPicker", { zoomControl: true }).setView([initialLat, initialLng], hasCoords ? 12 : 9);
+		  setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 300);
           this.setupResilientTileLayer(this.pickerMap, container.parentElement, true);
           if (!hasCoords && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
