@@ -1576,17 +1576,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
       background: #0a1e27;
       z-index: 1;
     }
-    /* Correção: estabiliza coordenadas do Leaflet dentro do modal */
-    .modal-overlay.active,
-    .modal-content {
-      transform: none !important;
-      animation: none !important;
-      position: relative !important;
-    }
-    .map-coord-wrapper {
-      position: relative;
-      isolation: isolate;
-    }
     .map-fallback-bg {
       background: radial-gradient(circle at 50% 50%, #164e63 0%, #0d3242 55%, #08202c 100%) !important;
     }
@@ -6786,13 +6775,11 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         modal.classList.add("active");
 
         // Init picker map
-        setTimeout(() => this.initPickerMap(producer), 600);
-	    setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 500);
+        setTimeout(() => this.initPickerMap(producer), 200);
       }
 
       closeProducerModal() {
         document.getElementById("producerModal").classList.remove("active");
-        if (this.pickerMap) { this.pickerMap.remove(); this.pickerMap = null; }
       }
       initPickerMap(producer) {
         if (!window.L) return;
@@ -6806,9 +6793,6 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
 
         if (!this.pickerMap) {
           this.pickerMap = L.map("mapPicker", { zoomControl: true }).setView([initialLat, initialLng], hasCoords ? 12 : 9);
-		  setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 300);
-		 setTimeout(() => { if (this.pickerMap) { this.pickerMap.invalidateSize(); } }, 800);
-		 setTimeout(() => { if (this.pickerMap) this.pickerMap.invalidateSize(); }, 1500);
           this.setupResilientTileLayer(this.pickerMap, container.parentElement, true);
           if (!hasCoords && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
