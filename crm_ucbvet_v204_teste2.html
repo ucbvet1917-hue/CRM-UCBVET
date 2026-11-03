@@ -1576,11 +1576,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
       background: #0a1e27;
       z-index: 1;
     }
-	      /* Correção: estabiliza coordenadas do Leaflet dentro do modal */
+    /* Correção: estabiliza coordenadas do Leaflet dentro do modal */
     .modal-overlay.active,
     .modal-content {
       transform: none !important;
       animation: none !important;
+      position: relative !important;
     }
     .map-coord-wrapper {
       position: relative;
