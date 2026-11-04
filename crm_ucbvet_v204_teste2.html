@@ -1922,11 +1922,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
       user-select: none;
       transition: all 0.15s ease;
     }
-	      /* Alinhamento das opções do Sistema Reprodutivo */
+    /* Alinhamento das opções do Sistema Reprodutivo */
     .checkbox-group .custom-check {
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+    @media (max-width: 768px) {
+      #producerModal .checkbox-group .custom-check input {
+        width: auto !important;
+      }
     }
     .custom-check:has(input:checked) {
       background: rgba(0, 168, 168, 0.22);
