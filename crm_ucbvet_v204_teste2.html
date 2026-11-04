@@ -3397,12 +3397,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </div>
                 <div class="form-group">
                   <label class="form-label">Sistema Reprodutivo <span style="font-weight:400; color:#94a3b8;">(multi seleção)</span></label>
-<div class="checkbox-group" style="display:grid; grid-template-columns:1fr 1fr; gap:6px; align-items:stretch;">
-<label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-corte-opt" value="Monta Natural"> Monta Natural</label>
-<label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-corte-opt" value="IA"> IA (Inseminação Artificial)</label>
-<label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-corte-opt" value="IATF"> IATF (Inseminação em Tempo Fixo)</label>
-<label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-corte-opt" value="TE"> TE (Transferência de Embrião)</label>
-<label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-corte-opt" value="FIV"> FIV (Fertilização in Vitro)</label>
+                  <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="Monta Natural"> Monta Natural</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="IA"> IA (Inseminação Artificial)</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="IATF"> IATF (Inseminação em Tempo Fixo)</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="TE"> TE (Transferência de Embrião)</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="FIV"> FIV (Fertilização in Vitro)</label>
                   </div>
                   <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
                     <div class="form-group" style="flex:1;">
@@ -3442,17 +3442,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="form-group">
                   <label class="form-label" for="fieldCowsLactating">Vacas em Lactação</label>
                   <input type="number" min="0" id="fieldCowsLactating" placeholder="Ex.: 25" oninput="app.calcDairyAvg()">
-    </div>
+                </div>
+
                 <div class="form-group">
                   <label class="form-label">Sistema Reprodutivo <span style="font-weight:400; color:#94a3b8;">(multi seleção)</span></label>
-<div class="checkbox-group" style="display:grid; grid-template-columns:1fr 1fr; gap:6px; align-items:stretch;">
-  <label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-leite-opt" value="Monta Natural"> Monta Natural</label>
-  <label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-leite-opt" value="IA"> IA (Inseminação Artificial)</label>
-  <label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-leite-opt" value="IATF"> IATF (Inseminação em Tempo Fixo)</label>
-  <label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-leite-opt" value="TE"> TE (Transferência de Embrião)</label>
-  <label class="custom-check" style="justify-content:flex-start; text-align:left;"><input type="checkbox" class="reprod-leite-opt" value="FIV"> FIV (Fertilização in Vitro)</label>
-</div>
-</div>
+                  <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="Monta Natural"> Monta Natural</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="IA"> IA (Inseminação Artificial)</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="IATF"> IATF (Inseminação em Tempo Fixo)</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="TE"> TE (Transferência de Embrião)</label>
+                    <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="FIV"> FIV (Fertilização in Vitro)</label>
+                  </div>
                   <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
                     <div class="form-group" style="flex:1;">
                       <label class="form-label" style="font-size:0.7rem;">Total de Animais (soma)</label>
@@ -5151,16 +5151,14 @@ this.distanceOrigin = localStorage.getItem(this.distanceOriginKey) || "gps";
             const savedO = JSON.parse(localStorage.getItem("crmUserLoc"));
             if (savedO && savedO.lat != null) routeOrigin = `${savedO.lat},${savedO.lng}`;
           } catch (e) {}
-const distBadgeHtml = distInfo.hasCoords
+        const distBadgeHtml = distInfo.hasCoords
         ? `<a class="distance-badge" style="text-decoration:none; cursor:pointer;"
               title="Abrir trajeto da minha localização até a propriedade"
-              href="https://www.google.com/maps/dir/?api=1&origin=${routeOrigin}&destination=${p.lat},${p.lng}&travelmode=driving"
-              target="_blank" rel="noopener"
-              onclick="event.stopPropagation();">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 8 12 6 9 8 12 2"/><circle cx="12" cy="12" r="3"/></svg>
-            ${distInfo.distStr}
-          </a>`
-: `<button type="button" class="distance-badge no-coords" onclick="app.quickLocateProducer('${p.id}')" title="Clique para registrar localização">
+              onclick="event.stopPropagation(); event.preventDefault(); app.askMapChoice(${p.lat}, ${p.lng}, '${routeOrigin}');">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 8 12 6 9 8 12 2"/><circle cx="12" cy="12" r="3"/></svg>
+              ${distInfo.distStr}
+            </a>`
+        : `<button type="button" class="distance-badge no-coords" onclick="app.quickLocateProducer('${p.id}')" title="Clique para registrar localização">
                  ⚠️ sem coordenadas
                </button>`;
 
@@ -6666,7 +6664,6 @@ saveReprodLeiteDetails() {
     btn.textContent = name + (active ? " ✓" : "");
   }
       openProducerModal(producer = null) {
-        this._editingProducer = producer || null;  
         if (!producer) {
           this._editingProducer = null;
           this._reprodCorteTemp = null;
@@ -6778,10 +6775,19 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         setTimeout(() => this.initPickerMap(producer), 200);
       }
 
-      closeProducerModal() {
+closeProducerModal() {
         document.getElementById("producerModal").classList.remove("active");
-      }
+      },
 
+      askMapChoice(lat, lng, origin) {
+        if (!lat || !lng) { alert("Produtor sem coordenadas."); return; }
+        const useGoogle = confirm("Abrir trajeto em qual app?\n\nOK = Google Maps\nCancelar = Waze");
+        const dest = encodeURIComponent(lat + "," + lng);
+        const url = useGoogle
+          ? "https://www.google.com/maps/dir/?api=1&origin=" + (origin || "") + "&destination=" + dest + "&travelmode=driving"
+          : "https://waze.com/ul?ll=" + lat + "," + lng + "&navigate=yes";
+        window.open(url, "_blank");
+      },
       initPickerMap(producer) {
         if (!window.L) return;
         const container = document.getElementById("mapPicker");
