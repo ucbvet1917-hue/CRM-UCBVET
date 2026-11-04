@@ -1937,9 +1937,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
     #producerModal .checkbox-group:has(input.reprod-corte-opt) .custom-check,
     #producerModal .checkbox-group:has(input.reprod-leite-opt) .custom-check {
       width: 100% !important;
+      display: flex !important;
       align-items: center !important;
       justify-content: flex-start !important;
       text-align: left !important;
+      flex-wrap: nowrap !important;
+      padding-left: 8px !important;
+    }
+    #producerModal .checkbox-group:has(input.reprod-corte-opt) .custom-check span,
+    #producerModal .checkbox-group:has(input.reprod-leite-opt) .custom-check span {
+      white-space: normal !important;
     }
     @media (max-width: 768px) {
       #producerModal .checkbox-group .custom-check {
