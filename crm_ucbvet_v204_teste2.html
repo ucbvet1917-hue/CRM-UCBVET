@@ -1928,25 +1928,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
       align-items: center;
       gap: 6px;
     }
-    #producerModal .checkbox-group:has(input.reprod-corte-opt),
-    #producerModal .checkbox-group:has(input.reprod-leite-opt) {
-      grid-template-columns: 1fr !important;
-      align-items: start !important;
-      justify-items: start !important;
-    }
-    #producerModal .checkbox-group:has(input.reprod-corte-opt) .custom-check,
-    #producerModal .checkbox-group:has(input.reprod-leite-opt) .custom-check {
+    #producerModal .reprod-grid label {
       width: 100% !important;
       display: flex !important;
       align-items: center !important;
       justify-content: flex-start !important;
       text-align: left !important;
       flex-wrap: nowrap !important;
+      gap: 6px !important;
       padding-left: 8px !important;
-    }
-    #producerModal .checkbox-group:has(input.reprod-corte-opt) .custom-check span,
-    #producerModal .checkbox-group:has(input.reprod-leite-opt) .custom-check span {
-      white-space: normal !important;
     }
     @media (max-width: 768px) {
       #producerModal .checkbox-group .custom-check {
@@ -3437,7 +3427,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </div>
                 <div class="form-group">
                   <label class="form-label">Sistema Reprodutivo <span style="font-weight:400; color:#94a3b8;">(multi seleção)</span></label>
-                  <div style="display:flex; flex-direction:column; gap:6px; align-items:stretch;">
+                  <div class="reprod-grid" style="display:flex; flex-direction:column; gap:6px; align-items:stretch;">
                     <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="Monta Natural"> Monta Natural</label>
                     <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="IA"> IA (Inseminação Artificial)</label>
                     <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-corte-opt" value="IATF"> IATF (Inseminação em Tempo Fixo)</label>
@@ -3486,7 +3476,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
                 <div class="form-group">
                   <label class="form-label">Sistema Reprodutivo <span style="font-weight:400; color:#94a3b8;">(multi seleção)</span></label>
-                  <div style="display:flex; flex-direction:column; gap:6px; align-items:stretch;">
+                  <div class="reprod-grid" style="display:flex; flex-direction:column; gap:6px; align-items:stretch;">
                     <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="Monta Natural"> Monta Natural</label>
                     <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="IA"> IA (Inseminação Artificial)</label>
                     <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem;"><input type="checkbox" class="reprod-leite-opt" value="IATF"> IATF (Inseminação em Tempo Fixo)</label>
