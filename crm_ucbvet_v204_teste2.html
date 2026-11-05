@@ -8889,17 +8889,27 @@ ${(() => {
 }
 </style>
 <script>
-/* Alinhamento Sistema Reprodutivo: 1 coluna + classe reprod-grid em tempo real */
+/* Alinhamento Sistema Reprodutivo: força estilos inline em todos os níveis */
 document.addEventListener("DOMContentLoaded", function () {
-document.title = "SCRIPT OK";
+  document.title = "SCRIPT OK";
   document.querySelectorAll(".reprod-corte-opt, .reprod-leite-opt").forEach(function (cb) {
     var lab = cb.closest("label");
     var box = lab ? lab.parentElement : null;
     if (box) {
       box.classList.add("reprod-grid");
-      box.style.gridTemplateColumns = "1fr";
-      box.style.display = "grid";
+      box.style.setProperty("display", "grid", "important");
+      box.style.setProperty("grid-template-columns", "1fr", "important");
     }
+    if (lab) {
+      lab.style.setProperty("display", "flex", "important");
+      lab.style.setProperty("align-items", "center", "important");
+      lab.style.setProperty("justify-content", "flex-start", "important");
+      lab.style.setProperty("flex-wrap", "nowrap", "important");
+      lab.style.setProperty("text-align", "left", "important");
+    }
+    cb.style.setProperty("width", "auto", "important");
+    cb.style.setProperty("flex", "0 0 auto", "important");
+    cb.style.setProperty("margin", "0", "important");
   });
 });
 </script>
