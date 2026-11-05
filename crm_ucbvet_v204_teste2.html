@@ -7050,6 +7050,12 @@ const aptitude = aptitudes.join(", ");
           if (recAtual.reprodCorteDetails) producerData.reprodCorteDetails = recAtual.reprodCorteDetails;
           if (recAtual.reprodLeiteDetails) producerData.reprodLeiteDetails = recAtual.reprodLeiteDetails;
         }
+		        if (!producerData.reprodCorteDetails && this._reprodCorteTemp) {
+          producerData.reprodCorteDetails = { categorias: { ...this._reprodCorteTemp.categorias }, obs: this._reprodCorteTemp.obs || "" };
+        }
+        if (!producerData.reprodLeiteDetails && this._reprodLeiteTemp) {
+          producerData.reprodLeiteDetails = { categorias: { ...this._reprodLeiteTemp.categorias }, obs: this._reprodLeiteTemp.obs || "" };
+        }
 
         // Save local
         const index = this.producers.findIndex(p => p.id === id);
@@ -7076,9 +7082,9 @@ const aptitude = aptitudes.join(", ");
         const prod = this.producers.find(p => p.id === id);
         if (prod) {
           this._editingProducer = prod;
-          this._reprodCorteTemp = null;
-          this._reprodLeiteTemp = null;
-          this.openProducerModal(prod);
+          this._reprodCorteTemp = prod.reprodCorteDetails ? { categorias: { ...prod.reprodCorteDetails.categorias }, obs: prod.reprodCorteDetails.obs || "" } : null;
+          this._reprodLeiteTemp = prod.reprodLeiteDetails ? { categorias: { ...prod.reprodLeiteDetails.categorias }, obs: prod.reprodLeiteDetails.obs || "" } : null;
+			this.openProducerModal(prod);
         }
       }
 
