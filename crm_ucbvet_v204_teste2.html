@@ -8889,6 +8889,20 @@ ${(() => {
 }
 </style>
 <script>
+/* Alinhamento Sistema Reprodutivo: 1 coluna + classe reprod-grid em tempo real */
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".reprod-corte-opt, .reprod-leite-opt").forEach(function (cb) {
+    var lab = cb.closest("label");
+    var box = lab ? lab.parentElement : null;
+    if (box) {
+      box.classList.add("reprod-grid");
+      box.style.gridTemplateColumns = "1fr";
+      box.style.display = "grid";
+    }
+  });
+});
+</script>
+<script>
 /* Correção automática da estrutura do modal de cadastro */
 document.addEventListener("DOMContentLoaded", function () {
   var content = document.querySelector("#producerModal .modal-content");
