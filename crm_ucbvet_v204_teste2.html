@@ -6978,12 +6978,13 @@ const elBreedLeite = document.getElementById("fieldBreedLeite"); if (elBreedLeit
         const alqType = document.getElementById("fieldAlqType").value;
         const hectares = this.calcHectares(areaVal, areaUnit, alqType);
 
+const aptitudes = Array.from(document.querySelectorAll('input[name="fieldAptitude"]:checked')).map(el => el.value);
 if (aptitudes.length === 0) {
   alert("Selecione ao menos uma Aptidão (Pecuária de Corte ou Pecuária de Leite).");
   return;
 }
-const aptitude = aptitudes.join(", ");        
-        // Corte categories
+const aptitude = aptitudes.join(", ");
+		// Corte categories
         const cats = [];
         if (document.getElementById("catCria").checked) cats.push("Cria");
         if (document.getElementById("catRecria").checked) cats.push("Recria");
